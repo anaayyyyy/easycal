@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="cal.css">
+    <style>
+        header{
+    /* background-color: rgba(71, 77, 78, 0); */
+    width: 100%;
+    height: 5rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    font-family :'Times New Roman', Times, serif;
+    font-weight:bolder;
+    font-size: larger;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    background-image: url(https://e0.pxfuel.com/wallpapers/1023/5/desktop-wallpaper-dark-aesthetic-background-dark-aesthetic-star.jpg);
+}
+
+.calculator {
+    width: 250px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    flex-direction: column;
+}
+input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.calculator-description{
+    background-color: rgb(235, 233, 233);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+footer{
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg);
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: aliceblue;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h3>EASY CALCULATOR</h3>
+    </header>
+    <section>
+        <div class="calculator">
+            <input type="text" id="display" readonly placeholder="Hello">
+            <div class="buttons">
+                <button onclick="appendToDisplay('(')">(</button>
+                <button onclick="appendToDisplay(')')">)</button>
+                <button onclick="clearDisplay()">C</button>
+                <button onclick="backspace()">←</button>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button onclick="appendToDisplay('/')">/</button>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button onclick="appendToDisplay('*')">*</button>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button onclick="appendToDisplay('-')">-</button>
+                <button onclick="appendToDisplay('.')">.</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="calculateResult()">=</button>
+                <button onclick="appendToDisplay('+')">+</button>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-description">
+        <h3>EASY Calculator</h3>
+        <p>
+            The Easy Calculator is a versatile and feature-rich web-based tool designed to handle a wide range of mathematical calculations with ease and precision. Whether you need to perform basic arithmetic, calculate percentages, find square roots, or compute squares, this calculator has got you covered.
+        </p>
+    
+        <h3>Key Features:</h3>
+        <ul>
+            <li><strong>Basic Arithmetic:</strong> The calculator supports standard arithmetic operations, including addition, subtraction, multiplication, and division. Enter your expressions, and the calculator will provide quick and accurate results.</li>
+            <li><strong>Parentheses:</strong> You can use parentheses to group and prioritize your calculations. This feature enables complex expressions to be evaluated accurately.</li>
+            <li><strong>Percentage Calculation:</strong> Need to calculate percentages quickly? Simply enter your value followed by "%," and the calculator will compute the percentage of the number.</li>
+            <li><strong>Square Root:</strong> To find the square root of a number, use the "√" button. It's a handy tool for calculating square roots without hassle.</li>
+            <li><strong>Square Function:</strong> The "x^2" button allows you to square a number instantly. This feature is useful for finding the square of a value.</li>
+            <li><strong>Clear and Backspace:</strong> The calculator provides options to clear the display (C) or delete the last entered digit (←), making it easy to correct mistakes.</li>
+        </ul>
+    
+        <h3>How to Use:</h3>
+        <ol>
+            <li>Enter your mathematical expression in the input field.</li>
+            <li>Use parentheses for complex calculations.</li>
+            <li>Click the "=" button to compute the result.</li>
+            <li>Utilize the additional functions like square root, square, and percentage for specific operations.</li>
+            <li>Clear the display or correct entries as needed.</li>
+        </ol>
+    
+        <p><strong>Note:</strong> While this calculator is a versatile tool, it's essential to ensure accurate input for precise results. Handle error cases with care, and remember to replace "%" with "/100" for percentage calculations.</p>
+    
+        
+    </section>
+    <h2>2. App to calculate your trip's fuel cost.</h2>
+
+    <div class="calculator">
+        <h3>Fuel Cost & Efficiency Calculator :</h3>
+        <label for="distance">Distance (kilometers):</label>
+        <input type="number" id="distance" placeholder="Enter distance" required><br>
+
+        <label for="fuelEfficiency">Fuel Efficiency (kmpl):</label>
+        <input type="number" id="fuelEfficiency" placeholder="Enter kmpl" required><br>
+
+        <label for="fuelPrice">Fuel Price per Litre (Rs):</label>
+        <input type="number" id="fuelPrice" placeholder="Enter fuel price" required><br>
+
+        <button onclick="calculateCost()">Calculate</button><br>
+        <button onclick="clearDisplay()">reset</button>
+        <p id="result"></p>
+    </div>
+
+    <section class="calculator-description">
+        <h3>Fuel Cost & Efficiency Calculator</h3>
+        <p>
+            The Fuel Cost & Efficiency Calculator is a practical and user-friendly web application designed to help you calculate the cost of fuel for a specific trip based on the distance to be traveled, the fuel efficiency of your vehicle (in kilometers per liter - KMPL), and the current price of fuel per liter. Whether you're planning a road trip or simply want to estimate your fuel expenses for daily commutes, this calculator simplifies the process.
+        </p>
+    
+        <h3>Key Features:</h3>
+        <ul>
+            <li><strong>Distance Calculation:</strong> Enter the distance you plan to travel in kilometers, and the calculator will use this value to determine the total fuel cost.</li>
+            <li><strong>Fuel Efficiency (KMPL):</strong> Specify your vehicle's fuel efficiency in kilometers per liter (KMPL). This figure represents how many kilometers your vehicle can travel on one liter of fuel.</li>
+            <li><strong>Fuel Price:</strong> Input the current price of fuel per liter at your location.</li>
+            <li><strong>Calculation:</strong> Click the "Calculate" button to instantly compute the estimated fuel cost for your trip.</li>
+            <li><strong>Result Display:</strong> The calculator displays the total fuel cost in your local currency based on the provided information.</li>
+        </ul>
+    
+        <h3>How to Use:</h3>
+        <ol>
+            <li>Enter the distance (in kilometers) you intend to travel.</li>
+            <li>Input your vehicle's fuel efficiency in kilometers per liter (KMPL).</li>
+            <li>Specify the current price of fuel per liter in your area.</li>
+            <li>Click the "Calculate" button.</li>
+            <li>View the result, which displays the estimated total fuel cost for your trip.</li>
+        </ol>
+    
+        <p><strong>Note:</strong> Ensure that all input values are numeric and accurate for precise calculations. The calculator is a valuable tool for planning trips and managing your budget by estimating fuel expenses accurately.</p>
+    
+        <p>Start planning your journeys with confidence using the Fuel Cost & Efficiency Calculator and gain better control over your travel budget!</p>
+    </section>
+    
+    
+    <footer>
+        Explore the power of math with our Easy Calculator and simplify your everyday calculations!
+
+    </footer>
+
+    <script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+    
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+        document.getElementById('distance').value = '';
+        document.getElementById('fuelEfficiency').value = '';
+        document.getElementById('fuelPrice').value = '';
+    }
+    
+    function backspace() {
+        const display = document.getElementById('display');
+        display.value = display.value.slice(0, -1);
+    }
+    
+    function calculateResult() {
+        try {
+            const result = eval(document.getElementById('display').value);
+            document.getElementById('display').value = result;
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+
+    function calculateCost() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            const fuelEfficiency = parseFloat(document.getElementById('fuelEfficiency').value);
+            const fuelPrice = parseFloat(document.getElementById('fuelPrice').value);
+
+            if (!isNaN(distance) && !isNaN(fuelEfficiency) && !isNaN(fuelPrice)) {
+                const fuelCost = (distance / fuelEfficiency) * fuelPrice;
+                document.getElementById('result').textContent = `Total Fuel Cost: Rs - ${fuelCost.toFixed(2)}`;
+            } else {
+                document.getElementById('result').textContent = 'Please enter valid numbers.';
+            }
+        }
+    </script>
+    
+</body>
+</html>
